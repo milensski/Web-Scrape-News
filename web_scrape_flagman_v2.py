@@ -54,5 +54,7 @@ while True:
                 print(description)
             print(link_to_article)
             news_container['title'].append(title)
+        else:
+            print("No Updates")
 
-    print("Waiting...")
+    print("Job End")
