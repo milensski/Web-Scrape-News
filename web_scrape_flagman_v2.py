@@ -1,6 +1,7 @@
+import time
+
 import requests
 from bs4 import BeautifulSoup
-import time
 
 
 def get_news():
@@ -11,11 +12,8 @@ def get_news():
     return page_news
 
 
-
-
-
 def all_news():
-    news_container = {'title':[]}
+    news_container = {'title': []}
     count = 0
     for element in get_news():
         count += 1
@@ -35,6 +33,7 @@ def all_news():
             print(description)
         print(link_to_article)
     return news_container
+
 
 news_container = all_news()
 
