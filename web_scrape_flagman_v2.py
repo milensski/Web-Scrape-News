@@ -2,6 +2,7 @@ import time
 
 import requests
 from bs4 import BeautifulSoup
+from winotify import Notification, audio
 
 
 def get_news():
@@ -32,7 +33,23 @@ def all_news():
         if description:
             print(description)
         print(link_to_article)
+
+        notify_article(title, description, link_to_article)
+
     return news_container
+
+
+def notify_article(note_title: str, note_description: str, link_to_article: str):
+    toast = Notification(app_id="News Update",
+                         title=note_title,
+                         msg=f"{note_description}\n",
+                         duration="long",
+
+                         )
+
+    toast.set_audio(audio.Default, loop=False)
+    toast.add_actions(label='Check article', launch=link_to_article)
+    toast.show()
 
 
 news_container = all_news()
@@ -47,14 +64,14 @@ while True:
             description = news.p.text
         else:
             description = None
-        link_to_article = 'flagman.bg' + news.find('a')['href']
+        link_to_article = 'https://flagman.bg' + news.find('a')['href']
         if title not in news_container['title']:
             print(title)
             if description:
                 print(description)
             print(link_to_article)
+
             news_container['title'].append(title)
-        else:
-            print("No Updates")
+            notify_article(title, description, link_to_article)
 
     print("Job End")
