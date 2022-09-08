@@ -5,8 +5,8 @@ from email.message import EmailMessage
 
 subject = "Email From Python"
 body = "This is a test email form Python!"
-sender_email = "eli_ivanova951@abv.bg"
-receiver_email = "feniks9511@gmail.com"
+sender_email = input("Please enter sender email address")
+receiver_email = input("Please enter receiver email address")
 password = input("Enter a password: ")
 
 message = EmailMessage()
