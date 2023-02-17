@@ -1,5 +1,5 @@
-# Web-Scrape-News
-Web scraping for new news updates
+# Web-Scrape-News 
+Web scraping for new news updates -> **[live demo](https://replit.com/@milensski/Webscrape#main.py)**
 
 ## Console application
 
